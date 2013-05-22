@@ -26,8 +26,7 @@ public class CompetencePageStepDefinitions {
 //        driver = new FirefoxDriver();
         driver = new ChromeDriver();
     }
-
-    @After
+                                          @After
     public void stopService() {
         driver.quit();
     }
