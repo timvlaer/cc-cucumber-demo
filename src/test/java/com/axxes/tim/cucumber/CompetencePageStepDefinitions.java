@@ -5,7 +5,8 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 
 import java.io.IOException;
 
@@ -18,9 +19,12 @@ public class CompetencePageStepDefinitions {
 
     private WebDriver driver;
 
+    private static ChromeDriverService service;
+
     @Before
     public void createAndStartService() throws IOException {
-        driver = new FirefoxDriver();
+//        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
     }
 
     @After
