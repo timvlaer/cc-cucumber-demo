@@ -5,11 +5,8 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.io.File;
 import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -19,26 +16,16 @@ public class CompetencePageStepDefinitions {
 
     public static final String SKILLS_PAGE = "http://www.axxes-it.com/nl/skills";
 
-    private static ChromeDriverService service;
-
     private WebDriver driver;
 
     @Before
     public void createAndStartService() throws IOException {
-        if (service == null) {
-            service = new ChromeDriverService.Builder()
-                    .usingDriverExecutable(new File("chromedriver"))
-                    .usingAnyFreePort()
-                    .build();
-            service.start();
-
-            driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
-        }
+        driver = new FirefoxDriver();
     }
 
     @After
-    public static void stopService() {
-        service.stop();
+    public void stopService() {
+        driver.quit();
     }
 
 
